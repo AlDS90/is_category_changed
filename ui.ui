@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>684</width>
-    <height>684</height>
+    <width>797</width>
+    <height>670</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -80,25 +80,31 @@
      <rect>
       <x>10</x>
       <y>70</y>
-      <width>651</width>
+      <width>781</width>
       <height>571</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
       <string>Земли сельзоз назначения</string>
      </attribute>
-     <widget class="QTreeWidget" name="treeWidget">
+     <widget class="QTableWidget" name="tableWidget">
       <property name="geometry">
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>631</width>
-        <height>531</height>
+        <width>751</width>
+        <height>521</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="lineWidth">
+       <number>1</number>
       </property>
       <column>
        <property name="text">
@@ -121,13 +127,13 @@
      <attribute name="title">
       <string>Земли промышленности</string>
      </attribute>
-     <widget class="QTreeWidget" name="treeWidget_2">
+     <widget class="QTableWidget" name="tableWidget_2">
       <property name="geometry">
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>631</width>
-        <height>531</height>
+        <width>751</width>
+        <height>521</height>
        </rect>
       </property>
       <column>
@@ -151,13 +157,13 @@
      <attribute name="title">
       <string>Земли населенных пунктов</string>
      </attribute>
-     <widget class="QTreeWidget" name="treeWidget_3">
+     <widget class="QTableWidget" name="tableWidget_3">
       <property name="geometry">
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>631</width>
-        <height>531</height>
+        <width>751</width>
+        <height>521</height>
        </rect>
       </property>
       <column>
