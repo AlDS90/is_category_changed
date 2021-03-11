@@ -85,13 +85,13 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
-    <widget class="QWidget" name="tab">
+    <widget class="QWidget" name="tab_sx">
      <attribute name="title">
       <string>Земли сельзоз назначения</string>
      </attribute>
-     <widget class="QTableWidget" name="tableWidget">
+     <widget class="QTableWidget" name="table_sx">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -123,11 +123,11 @@
       </column>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="tab_prom">
      <attribute name="title">
       <string>Земли промышленности</string>
      </attribute>
-     <widget class="QTableWidget" name="tableWidget_2">
+     <widget class="QTableWidget" name="table_prom">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -153,11 +153,11 @@
       </column>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_3">
+    <widget class="QWidget" name="tab_nasel">
      <attribute name="title">
       <string>Земли населенных пунктов</string>
      </attribute>
-     <widget class="QTableWidget" name="tableWidget_3">
+     <widget class="QTableWidget" name="table_nasel">
       <property name="geometry">
        <rect>
         <x>10</x>
