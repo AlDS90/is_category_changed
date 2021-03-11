@@ -60,7 +60,6 @@ class App(QtWidgets.QMainWindow):
             for j, col in enumerate(row):
                 item = QtWidgets.QTableWidgetItem(str(col if not isinstance(col, datetime.date)
                                                       else col.strftime('%d.%m.%Y')))
-                print(1)
                 self.d_tb[db_name][0].setItem(i, j, item)
 
     def clear_tb(self, tb):
