@@ -1,19 +1,12 @@
 import sys
 import psycopg2 as pg
 import datetime
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtGui import QIcon
 from ui import Ui_MainWindow
 
 
-def init_tb(tb):
-    tb.setRowCount(1)
-    tb.setColumnWidth(0, 130)
-    tb.setColumnWidth(1, 125)
-    tb.setColumnWidth(2, 440)
-
-
-def get_text(path: str = None) -> str:
+def get_text(path: str) -> str:
     with open(path) as inf:
         text = inf.read()
     return text
@@ -34,19 +27,36 @@ class App(QtWidgets.QMainWindow):
         super(App, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.init_ui()
         self.d_tb = {'Земли сельзоз назначения': (self.ui.table_sx, 0),
                      'Земли промышленности': (self.ui.table_prom, 1),
                      'Земли населенных пунктов': (self.ui.table_nasel, 2)}
+        self.init_ui()
 
     def init_ui(self):
         self.setWindowTitle('Анализ категории')
         self.setWindowIcon(QIcon('ui_img/logo.png'))
         self.setFixedSize(self.size())
-        init_tb(self.ui.table_sx)
-        init_tb(self.ui.table_prom)
-        init_tb(self.ui.table_nasel)
+        [self.init_tb(key) for key in self.d_tb.keys()]
         self.ui.pushButton.clicked.connect(self.start_processing)
+
+    def init_tb(self, key):
+        tb = self.d_tb[key][0]
+        self.add_one_row(key)
+        tb.setColumnWidth(0, 120)
+        tb.setColumnWidth(1, 80)
+        tb.setColumnWidth(2, 125)
+        tb.setColumnWidth(3, 80)
+        tb.setColumnWidth(4, 80)
+        tb.setColumnWidth(5, 210)
+        tb.setColumnWidth(6, 190)
+
+    def add_one_row(self, name_tb):
+        tb = self.d_tb[name_tb][0]
+        tb.setRowCount(1)
+        for i in range(tb.columnCount()):
+            item = QtWidgets.QTableWidgetItem()
+            item.setFlags(QtCore.Qt.ItemIsEnabled)
+            tb.setItem(0, i, item)
 
     def start_processing(self):
         [self.clear_tb(key) for key in self.d_tb.keys()]
@@ -54,7 +64,9 @@ class App(QtWidgets.QMainWindow):
             pass
         else:
             pass
-        [tb.setRowCount(tb.rowCount()) if tb.rowCount() else tb.setRowCount(1) for tb, _ in self.d_tb.values()]
+        [tb.setRowCount(tb.rowCount())
+         if tb.rowCount() else tb.setRowCount(1)
+         for tb, _ in self.d_tb.values()]
 
     def get_scroll(self):
         scroll_is_empty = False
@@ -77,11 +89,17 @@ class App(QtWidgets.QMainWindow):
             for i, col in enumerate(row):
                 item = QtWidgets.QTableWidgetItem(str(col if not isinstance(col, datetime.date)
                                                       else col.strftime('%d.%m.%Y')))
+                item.setFlags(QtCore.Qt.ItemIsEnabled)
                 tb.setItem(tb.rowCount() - 1, i, item)
 
     def clear_tb(self, db_name):
         tb = self.d_tb[db_name][0]
         [tb.removeRow(row) for row in sorted(range(tb.rowCount()), reverse=True)]
+        # tb.setRowCount(1)
+        # for i in range(tb.columnCount()):
+        #     item = QtWidgets.QTableWidgetItem()
+        #     item.setFlags(QtCore.Qt.ItemIsEnabled)
+        #     tb.setItem(0, i, item)
 
 
 class DB:
