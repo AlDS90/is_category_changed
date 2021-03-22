@@ -12,16 +12,6 @@ def get_text(path: str) -> str:
     return text
 
 
-# def get_tb_data(tb):
-#     tb_data = list()
-#     num_rows, num_columns = tb.rowCount(), tb.columnCount()
-#     for row in range(num_rows):
-#         tb_data.append([])
-#         for column in range(num_columns):
-#             tb_data[row].append(tb.item(row, column))
-#     return tb_data
-
-
 class App(QtWidgets.QMainWindow):
     def __init__(self):
         super(App, self).__init__()
@@ -61,9 +51,22 @@ class App(QtWidgets.QMainWindow):
     def start_processing(self):
         [self.clear_tb(key) for key in self.d_tb.keys()]
         if not self.get_scroll():
-            pass
-        else:
-            pass
+            date = self.ui.dateEdit.text()
+            db.get_kn(self.ui.dateEdit.text(), self.ui.comboBox.currentText())
+            kn = ','.join(['\'' + item[0] + '\'' for item in db.cur.fetchall()])
+            db.close_con_cur()
+            db_name_first, db_name_second = [key for key in self.d_tb.keys() if key != self.ui.comboBox.currentText()]
+            db.get_db_data_by_kn(date, db_name_first, kn)
+            change_object_first = db.cur.fetchall()
+            if change_object_first:
+                self.view_records(change_object_first, db_name_first)
+            db.close_con_cur()
+            db.get_db_data_by_kn(date, db_name_second, kn)
+            change_object_second = db.cur.fetchall()
+            if change_object_second:
+                self.view_records(change_object_second, db_name_second)
+            db.close_con_cur()
+
         [tb.setRowCount(tb.rowCount())
          if tb.rowCount() else tb.setRowCount(1)
          for tb, _ in self.d_tb.values()]
@@ -109,6 +112,8 @@ class DB:
         self.cs_prom_16_st, self.cs_prom_24_st = get_text(r'db/cs_prom_16_st.txt'), get_text(r'db/cs_prom_24_st.txt')
         self.cs_sx_16_st, self.cs_sx_24_st = get_text(r'db/cs_sx_16_st.txt'), get_text(r'db/cs_sx_24_st.txt')
         self.q_get_data = get_text(r'db/q_get_data.sql')
+        self.q_get_data_by_kn = get_text(r'db/q_get_data_by_kn.sql')
+        self.q_get_kn = get_text(r'db/q_get_kn.sql')
         self.d_css = {'Земли сельзоз назначения': (self.cs_sx_16_st, self.cs_sx_24_st),
                       'Земли промышленности': (self.cs_prom_16_st, self.cs_prom_24_st),
                       'Земли населенных пунктов': (self.cs_nasel,)}
@@ -117,7 +122,19 @@ class DB:
         cs = db.d_css[db_name][0]
         self.con = pg.connect(cs)
         self.cur = self.con.cursor()
-        self.cur.execute(db.q_get_data, {'date': date})
+        self.cur.execute(self.q_get_data, {'date': date})
+
+    def get_db_data_by_kn(self, date, db_name, kn):
+        cs = db.d_css[db_name][0]
+        self.con = pg.connect(cs)
+        self.cur = self.con.cursor()
+        self.cur.execute(self.q_get_data_by_kn.replace('%(kn)s', kn), {'date': date})
+
+    def get_kn(self, date, db_name):
+        cs = db.d_css[db_name][0]
+        self.con = pg.connect(cs)
+        self.cur = self.con.cursor()
+        self.cur.execute(self.q_get_kn, {'date': date})
 
     def close_con_cur(self):
         self.cur.close()

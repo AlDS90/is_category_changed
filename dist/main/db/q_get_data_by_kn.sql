@@ -7,5 +7,6 @@ SELECT cadastralnum,
        note
 FROM bufferbase JOIN listforrating
                 ON listforrating_unid = listforrating.unid AND
-                   listforrating.valuationdate = %(date)s
+                   listforrating.valuationdate <= %(date)s
+WHERE cadastralnum IN (%(kn)s)
 ORDER BY cadastralnum

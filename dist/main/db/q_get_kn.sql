@@ -1,10 +1,4 @@
-SELECT cadastralnum,
-       cadastralblock,
-       listforrating.name as name,
-       valuationdate as date,
-       areasdisplay,
-       utilizationbydoc,
-       note
+SELECT cadastralnum
 FROM bufferbase JOIN listforrating
                 ON listforrating_unid = listforrating.unid AND
                    listforrating.valuationdate = %(date)s

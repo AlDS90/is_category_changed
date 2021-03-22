@@ -14,11 +14,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(772, 640)
+        MainWindow.resize(772, 625)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
-        self.groupBox.setGeometry(QtCore.QRect(10, 10, 431, 51))
+        self.groupBox.setGeometry(QtCore.QRect(10, 0, 431, 55))
         self.groupBox.setObjectName("groupBox")
         self.dateEdit = QtWidgets.QDateEdit(self.groupBox)
         self.dateEdit.setGeometry(QtCore.QRect(10, 20, 110, 22))
@@ -33,12 +33,12 @@ class Ui_MainWindow(object):
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
-        self.tabWidget.setGeometry(QtCore.QRect(10, 70, 761, 551))
+        self.tabWidget.setGeometry(QtCore.QRect(10, 60, 756, 546))
         self.tabWidget.setObjectName("tabWidget")
         self.tab_sx = QtWidgets.QWidget()
         self.tab_sx.setObjectName("tab_sx")
         self.table_sx = QtWidgets.QTableWidget(self.tab_sx)
-        self.table_sx.setGeometry(QtCore.QRect(0, 0, 751, 521))
+        self.table_sx.setGeometry(QtCore.QRect(0, 0, 750, 520))
         self.table_sx.setStyleSheet("")
         self.table_sx.setLineWidth(1)
         self.table_sx.setObjectName("table_sx")
@@ -113,7 +113,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
