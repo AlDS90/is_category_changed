@@ -1,1 +1,0 @@
-dbname=ZU_PROM_2020_16st user=postgres password=51HfpHtf host=WINSERV2 port=5432
