@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(772, 625)
+        MainWindow.resize(928, 625)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
@@ -33,12 +33,12 @@ class Ui_MainWindow(object):
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
-        self.tabWidget.setGeometry(QtCore.QRect(10, 60, 756, 546))
+        self.tabWidget.setGeometry(QtCore.QRect(10, 60, 910, 546))
         self.tabWidget.setObjectName("tabWidget")
         self.tab_sx = QtWidgets.QWidget()
         self.tab_sx.setObjectName("tab_sx")
         self.table_sx = QtWidgets.QTableWidget(self.tab_sx)
-        self.table_sx.setGeometry(QtCore.QRect(0, 0, 750, 520))
+        self.table_sx.setGeometry(QtCore.QRect(0, 0, 904, 520))
         self.table_sx.setStyleSheet("")
         self.table_sx.setLineWidth(1)
         self.table_sx.setObjectName("table_sx")
@@ -62,7 +62,7 @@ class Ui_MainWindow(object):
         self.tab_prom = QtWidgets.QWidget()
         self.tab_prom.setObjectName("tab_prom")
         self.table_prom = QtWidgets.QTableWidget(self.tab_prom)
-        self.table_prom.setGeometry(QtCore.QRect(0, 0, 751, 521))
+        self.table_prom.setGeometry(QtCore.QRect(0, 0, 904, 521))
         self.table_prom.setStyleSheet("")
         self.table_prom.setLineWidth(1)
         self.table_prom.setObjectName("table_prom")
@@ -86,7 +86,7 @@ class Ui_MainWindow(object):
         self.tab_nasel = QtWidgets.QWidget()
         self.tab_nasel.setObjectName("tab_nasel")
         self.table_nasel = QtWidgets.QTableWidget(self.tab_nasel)
-        self.table_nasel.setGeometry(QtCore.QRect(0, 0, 751, 521))
+        self.table_nasel.setGeometry(QtCore.QRect(0, 0, 904, 521))
         self.table_nasel.setStyleSheet("")
         self.table_nasel.setLineWidth(1)
         self.table_nasel.setObjectName("table_nasel")
@@ -113,7 +113,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

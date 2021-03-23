@@ -6,7 +6,7 @@ from PyQt5.QtGui import QIcon
 from ui import Ui_MainWindow
 
 
-def get_text(path: str) -> str:
+def get_text(path):
     with open(path) as inf:
         text = inf.read()
     return text
@@ -59,12 +59,12 @@ class App(QtWidgets.QMainWindow):
             db.get_db_data_by_kn(date, db_name_first, kn)
             change_object_first = db.cur.fetchall()
             if change_object_first:
-                self.view_records(change_object_first, db_name_first)
+                self.view_records(self.del_double(change_object_first), db_name_first)
             db.close_con_cur()
             db.get_db_data_by_kn(date, db_name_second, kn)
             change_object_second = db.cur.fetchall()
             if change_object_second:
-                self.view_records(change_object_second, db_name_second)
+                self.view_records(self.del_double(change_object_second), db_name_second)
             db.close_con_cur()
 
         [tb.setRowCount(tb.rowCount())
@@ -95,43 +95,46 @@ class App(QtWidgets.QMainWindow):
                 item.setFlags(QtCore.Qt.ItemIsEnabled)
                 tb.setItem(tb.rowCount() - 1, i, item)
 
+    def del_double(self, list_):
+        list_edit = []
+        for i, item in enumerate([item[0] for item in list_]):
+            if item not in [item[0] if isinstance(item, tuple) else item
+                            for item in list_edit]:
+                list_edit.append(list_[i])
+        return list_edit
+
     def clear_tb(self, db_name):
         tb = self.d_tb[db_name][0]
         [tb.removeRow(row) for row in sorted(range(tb.rowCount()), reverse=True)]
-        # tb.setRowCount(1)
-        # for i in range(tb.columnCount()):
-        #     item = QtWidgets.QTableWidgetItem()
-        #     item.setFlags(QtCore.Qt.ItemIsEnabled)
-        #     tb.setItem(0, i, item)
 
 
 class DB:
     def __init__(self):
         self.con, self.cur = None, None
         self.cs_nasel = get_text(r'db/cs_nasel.txt')
-        self.cs_prom_16_st, self.cs_prom_24_st = get_text(r'db/cs_prom_16_st.txt'), get_text(r'db/cs_prom_24_st.txt')
-        self.cs_sx_16_st, self.cs_sx_24_st = get_text(r'db/cs_sx_16_st.txt'), get_text(r'db/cs_sx_24_st.txt')
+        self.cs_prom_16_st = get_text(r'db/cs_prom_16_st.txt')
+        self.cs_sx_16_st = get_text(r'db/cs_sx_16_st.txt')
         self.q_get_data = get_text(r'db/q_get_data.sql')
         self.q_get_data_by_kn = get_text(r'db/q_get_data_by_kn.sql')
         self.q_get_kn = get_text(r'db/q_get_kn.sql')
-        self.d_css = {'Земли сельзоз назначения': (self.cs_sx_16_st, self.cs_sx_24_st),
-                      'Земли промышленности': (self.cs_prom_16_st, self.cs_prom_24_st),
-                      'Земли населенных пунктов': (self.cs_nasel,)}
+        self.d_css = {'Земли сельзоз назначения': self.cs_sx_16_st,
+                      'Земли промышленности': self.cs_prom_16_st,
+                      'Земли населенных пунктов': self.cs_nasel}
 
     def get_db_data(self, date, db_name):
-        cs = db.d_css[db_name][0]
+        cs = self.d_css[db_name]
         self.con = pg.connect(cs)
         self.cur = self.con.cursor()
         self.cur.execute(self.q_get_data, {'date': date})
 
     def get_db_data_by_kn(self, date, db_name, kn):
-        cs = db.d_css[db_name][0]
+        cs = self.d_css[db_name]
         self.con = pg.connect(cs)
         self.cur = self.con.cursor()
         self.cur.execute(self.q_get_data_by_kn.replace('%(kn)s', kn), {'date': date})
 
     def get_kn(self, date, db_name):
-        cs = db.d_css[db_name][0]
+        cs = self.d_css[db_name]
         self.con = pg.connect(cs)
         self.cur = self.con.cursor()
         self.cur.execute(self.q_get_kn, {'date': date})
