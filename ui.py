@@ -22,6 +22,7 @@ class Ui_MainWindow(object):
         self.groupBox.setObjectName("groupBox")
         self.dateEdit = QtWidgets.QDateEdit(self.groupBox)
         self.dateEdit.setGeometry(QtCore.QRect(10, 20, 110, 22))
+        self.dateEdit.setDate(QtCore.QDate(2020, 1, 1))
         self.dateEdit.setObjectName("dateEdit")
         self.pushButton = QtWidgets.QPushButton(self.groupBox)
         self.pushButton.setGeometry(QtCore.QRect(340, 20, 81, 23))
@@ -62,7 +63,7 @@ class Ui_MainWindow(object):
         self.tab_prom = QtWidgets.QWidget()
         self.tab_prom.setObjectName("tab_prom")
         self.table_prom = QtWidgets.QTableWidget(self.tab_prom)
-        self.table_prom.setGeometry(QtCore.QRect(0, 0, 904, 521))
+        self.table_prom.setGeometry(QtCore.QRect(0, 0, 904, 520))
         self.table_prom.setStyleSheet("")
         self.table_prom.setLineWidth(1)
         self.table_prom.setObjectName("table_prom")
@@ -86,7 +87,7 @@ class Ui_MainWindow(object):
         self.tab_nasel = QtWidgets.QWidget()
         self.tab_nasel.setObjectName("tab_nasel")
         self.table_nasel = QtWidgets.QTableWidget(self.tab_nasel)
-        self.table_nasel.setGeometry(QtCore.QRect(0, 0, 904, 521))
+        self.table_nasel.setGeometry(QtCore.QRect(0, 0, 904, 520))
         self.table_nasel.setStyleSheet("")
         self.table_nasel.setLineWidth(1)
         self.table_nasel.setObjectName("table_nasel")
@@ -113,7 +114,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

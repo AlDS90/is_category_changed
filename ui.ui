@@ -35,6 +35,13 @@
        <height>22</height>
       </rect>
      </property>
+     <property name="date">
+      <date>
+       <year>2020</year>
+       <month>1</month>
+       <day>1</day>
+      </date>
+     </property>
     </widget>
     <widget class="QPushButton" name="pushButton">
      <property name="geometry">
@@ -85,7 +92,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab_sx">
      <attribute name="title">
@@ -153,7 +160,7 @@
         <x>0</x>
         <y>0</y>
         <width>904</width>
-        <height>521</height>
+        <height>520</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -209,7 +216,7 @@
         <x>0</x>
         <y>0</y>
         <width>904</width>
-        <height>521</height>
+        <height>520</height>
        </rect>
       </property>
       <property name="styleSheet">
