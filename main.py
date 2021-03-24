@@ -30,6 +30,7 @@ def get_s_kns(li_kns: list) -> str:
 class App(QtWidgets.QMainWindow):
     def __init__(self):
         super(App, self).__init__()
+        self.main_dir = r'\\192.168.1.40\All\Сотниченко А.Д\programs\is_category_changed'
         self.date, self.db_name_main, self.db_name_first, self.db_name_second = '', '', '', ''
         self.li_data_main_db, self.li_data_first_db, self.li_data_second_db = [], [], []
         self.ui = Ui_MainWindow()
@@ -82,7 +83,7 @@ class App(QtWidgets.QMainWindow):
             self.li_data_second_db = del_double(db.get_data(self.date, self.db_name_second,
                                                             db.q_get_data_first_and_second_dbs,
                                                             get_s_kns(li_kns_main_db)))
-            li_kns_union: list = []
+            li_kns_union = []
             li_kns_union.extend([(item[0],) for item in self.li_data_first_db])
             li_kns_union.extend([(item[0],) for item in self.li_data_second_db])
             if li_kns_union:
@@ -96,17 +97,28 @@ class App(QtWidgets.QMainWindow):
         [self.add_one_row(key) for key in self.d_tb.keys()]
 
     def unload_to_excel(self):
-        main_dir = r'\\192.168.1.40\All\Сотниченко А.Д\programs\is_category_changed'
-        file_name = '{}_{}_{}_analyze_doc.xlsx'.format(datetime.datetime.now().strftime('%d%m%Y_%H%M%S%f_'),
-                                                       self.date,
-                                                       self.db_name_main)
-        li_name_col = tuple([(self.ui.table_sx.horizontalHeaderItem(j).text(), j)
-                             for j in range(self.ui.table_sx.columnCount())])
-        d_data = {name: [row[col] for row in self.li_data_main_db] for name, col in li_name_col}
-        df = pd.DataFrame(d_data)
-        df.to_excel(main_dir + os.sep + file_name,
-                    sheet_name=self.db_name_main,
-                    index=False)
+        if self.db_name_main and \
+           self.db_name_first and \
+           self.db_name_second:
+            file_name = '{}_{}_{}_analyze_doc.xlsx'.format(datetime.datetime.now().strftime('%d%m%Y_%H%M%S%f_'),
+                                                           self.date,
+                                                           self.db_name_main)
+            li_name_col = tuple([(self.ui.table_sx.horizontalHeaderItem(j).text(), j)
+                                 for j in range(self.ui.table_sx.columnCount())])
+
+            df_main_db = pd.DataFrame({name: [row[col] for row in self.li_data_main_db]
+                                       for name, col in li_name_col})
+            df_first_db = pd.DataFrame({name: [row[col] for row in self.li_data_first_db]
+                                        for name, col in li_name_col})
+            df_second_db = pd.DataFrame({name: [row[col] for row in self.li_data_second_db]
+                                         for name, col in li_name_col})
+            d_data_shs = {self.db_name_main: df_main_db,
+                          self.db_name_first: df_first_db,
+                          self.db_name_second: df_second_db}
+            writer = pd.ExcelWriter(self.main_dir + os.sep + file_name, engine='xlsxwriter')
+            [d_data_shs[sh_name].to_excel(writer, sheet_name=sh_name, index=False)
+             for sh_name in d_data_shs.keys()]
+            writer.save()
 
     def display_records(self, li_data, db_name):
         tb = self.d_tb[db_name][0]
