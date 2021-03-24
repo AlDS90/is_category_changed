@@ -33,6 +33,9 @@
   ('pyi_rth_pyqt5',
    'C:\\Users\\ad_sotnichenko\\AppData\\Local\\Programs\\Python\\Python39\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pyqt5.py',
    'PYSOURCE'),
+  ('pyi_rth_pkgres',
+   'C:\\Users\\ad_sotnichenko\\AppData\\Local\\Programs\\Python\\Python39\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgres.py',
+   'PYSOURCE'),
   ('main',
    'C:\\Users\\ad_sotnichenko\\OneDrive\\education\\PycharmProjects\\is_category_changed\\main.py',
    'PYSOURCE'),
@@ -42,7 +45,7 @@
  [],
  False,
  False,
- 1616554076,
+ 1616572265,
  [('runw.exe',
    'c:\\users\\ad_sotnichenko\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit\\runw.exe',
    'EXECUTABLE')])
