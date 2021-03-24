@@ -50,14 +50,8 @@ class App(QtWidgets.QMainWindow):
 
     def init_tb(self, key: str):
         tb = self.d_tb[key][0]
+        [tb.setColumnWidth(i, width) for i, width in enumerate((120, 80, 125, 80, 80, 210, 190))]
         self.add_one_row(key)
-        tb.setColumnWidth(0, 120)
-        tb.setColumnWidth(1, 80)
-        tb.setColumnWidth(2, 125)
-        tb.setColumnWidth(3, 80)
-        tb.setColumnWidth(4, 80)
-        tb.setColumnWidth(5, 210)
-        tb.setColumnWidth(6, 190)
 
     def add_one_row(self, name_tb: str):
         tb = self.d_tb[name_tb][0]
