@@ -70,15 +70,15 @@ class App(QtWidgets.QMainWindow):
         db_name_first, db_name_second = [key for key in self.d_tb.keys() if key != db_name_main]
         li_kns_main_db = db.get_data(date, db_name_main, db.q_get_kns)
         if li_kns_main_db:
-            li_data_first_db = del_double(db.get_data(date, db_name_first, db.q_get_data_by_kn,
+            li_data_first_db = del_double(db.get_data(date, db_name_first, db.q_get_data_first_and_second_dbs,
                                                       get_s_kns(li_kns_main_db)))
-            li_data_second_db = del_double(db.get_data(date, db_name_second, db.q_get_data_by_kn,
+            li_data_second_db = del_double(db.get_data(date, db_name_second, db.q_get_data_first_and_second_dbs,
                                                        get_s_kns(li_kns_main_db)))
             li_kns_union: list = []
             li_kns_union.extend([(item[0],) for item in li_data_first_db])
             li_kns_union.extend([(item[0],) for item in li_data_second_db])
             if li_kns_union:
-                li_data_main_db = db.get_data(date, db_name_main, db.q_get_data_by_kn,
+                li_data_main_db = db.get_data(date, db_name_main, db.q_get_data_main_db,
                                               get_s_kns(li_kns_union))
                 for data, db_name in [(li_data_main_db, db_name_main),
                                       (li_data_first_db, db_name_first),
@@ -86,61 +86,6 @@ class App(QtWidgets.QMainWindow):
                     if data:
                         self.display_records(data, db_name)
         [self.add_one_row(key) for key in self.d_tb.keys()]
-        # for tb, _ in self.d_tb.values():
-        #     tb.nam
-        # [tb.setRowCount(tb.rowCount())
-        #  if tb.rowCount() else tb.setRowCount(1)
-        #  for tb, _ in self.d_tb.values()]
-
-        # print(li_kns_main_db)
-        # print(li_kns_first_db)
-        # print(li_kns_second_db)
-        # li_kns = self.get_kns()
-        # db.close_con_cur()
-        # if li_kns:
-        #     date = self.ui.dateEdit.text()
-        #     db_name_first, db_name_second = [key for key in self.d_tb.keys() if key != self.ui.comboBox.currentText()]
-        #     s_kns = ','.join(['\'' + item[0] + '\'' for item in li_kns])
-        #     db.get_db_data_by_kn(date, db_name_first, s_kns)
-        #     db.close_con_cur()
-        #     change_objects = db.cur.fetchall()
-        #     if change_objects:
-        #         self.view_records(self.del_double(change_objects), db_name_first)
-
-        # if not self.get_scroll():
-        #     date = self.ui.dateEdit.text()
-        #     db.get_li_kns(self.ui.dateEdit.text(), self.ui.comboBox.currentText())
-        #     kn = ','.join(['\'' + item[0] + '\'' for item in db.cur.fetchall()])
-        #     db.close_con_cur()
-        #     db_name_first, db_name_second = [key for key in self.d_tb.keys() if key != self.ui.comboBox.currentText()]
-        #     db.get_db_data_by_kn(date, db_name_first, kn)
-        #     change_object_first = db.cur.fetchall()
-        #     if change_object_first:
-        #         self.view_records(self.del_double(change_object_first), db_name_first)
-        #     db.close_con_cur()
-        #     db.get_db_data_by_kn(date, db_name_second, kn)
-        #     change_object_second = db.cur.fetchall()
-        #     if change_object_second:
-        #         self.view_records(self.del_double(change_object_second), db_name_second)
-        #     db.close_con_cur()
-        #
-        # [tb.setRowCount(tb.rowCount())
-        #  if tb.rowCount() else tb.setRowCount(1)
-        #  for tb, _ in self.d_tb.values()]
-
-    def get_scroll(self):
-        scroll_is_empty = False
-        db_name = self.ui.comboBox.currentText()
-        db.get_db_data(self.ui.dateEdit.text(), db_name)
-        li_data = db.cur.fetchall()
-        if li_data:
-            self.view_records(li_data, db_name)
-            db.close_con_cur()
-        else:
-            scroll_is_empty = True
-            db.close_con_cur()
-        self.ui.tabWidget.setCurrentIndex(self.d_tb[db_name][1])
-        return scroll_is_empty
 
     def display_records(self, li_data, db_name):
         tb = self.d_tb[db_name][0]
@@ -168,8 +113,8 @@ class DB:
                       'Земли промышленности': self.cs_prom_16_st,
                       'Земли населенных пунктов': self.cs_nasel}
 
-        self.q_get_data = get_text(r'db/q_get_data.sql')
-        self.q_get_data_by_kn = get_text(r'db/q_get_data_by_kn.sql')
+        self.q_get_data_main_db = get_text(r'db/q_get_data_main_db.sql')
+        self.q_get_data_first_and_second_dbs = get_text(r'db/q_get_data_first_and_second_dbs.sql')
         self.q_get_kns = get_text(r'db/q_get_kns.sql')
 
     def get_data(self, date: str, db_name: str, query: str, kns: str = None) -> list:
