@@ -125,6 +125,21 @@
       </column>
       <column>
        <property name="text">
+        <string>Сегмент</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Код расчета</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Код ВРИ</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
         <string>Описание перечня</string>
        </property>
       </column>
@@ -181,6 +196,21 @@
       </column>
       <column>
        <property name="text">
+        <string>Сегмент</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Код расчета</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Код ВРИ</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
         <string>Описание перечня</string>
        </property>
       </column>
@@ -233,6 +263,21 @@
       <column>
        <property name="text">
         <string>КК</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Сегмент</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Код расчета</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Код ВРИ</string>
        </property>
       </column>
       <column>

@@ -8,6 +8,8 @@ from PyQt5.QtGui import QIcon
 from ui import Ui_MainWindow
 
 
+# сегмент,код расчета и код ври
+
 def get_text(path: str) -> str:
     with open(path) as inf:
         text = inf.read()
@@ -50,7 +52,8 @@ class App(QtWidgets.QMainWindow):
 
     def init_tb(self, key: str):
         tb = self.d_tb[key][0]
-        [tb.setColumnWidth(i, width) for i, width in enumerate((120, 80, 125, 80, 80, 210, 190))]
+        [tb.setColumnWidth(i, width) for i, width in enumerate((120, 80, 60, 75, 55,
+                                                                125, 80, 80, 210, 190))]
         self.add_one_row(key)
 
     def add_one_row(self, name_tb: str):
@@ -94,7 +97,7 @@ class App(QtWidgets.QMainWindow):
         if self.db_name_main and \
            self.db_name_first and \
            self.db_name_second:
-            file_name = '{}_{}_{}_analyze_doc.xlsx'.format(datetime.datetime.now().strftime('%d%m%Y_%H%M%S%f_'),
+            file_name = '{}_{}_{}_analyze_doc.xlsx'.format(datetime.datetime.now().strftime('%d%m%Y_%H%M%S%f'),
                                                            self.date,
                                                            self.db_name_main)
             li_name_col = tuple([(self.ui.table_sx.horizontalHeaderItem(j).text(), j)

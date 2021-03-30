@@ -1,5 +1,8 @@
 SELECT cadastralnum,
        cadastralblock,
+       groupid,
+       codecalcuse,
+       codeuse,
        listforrating.name as name,
        valuationdate as date,
        areasdisplay,
