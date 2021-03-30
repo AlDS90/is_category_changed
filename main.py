@@ -43,7 +43,6 @@ class App(QtWidgets.QMainWindow):
     def init_ui(self):
         self.setWindowTitle('Анализ категории')
         self.setWindowIcon(QIcon('ui_img/logo.png'))
-        self.setFixedSize(self.size())
         [self.init_tb(key) for key in self.d_tb.keys()]
         self.ui.pushButton.clicked.connect(self.start_analyze)
         self.ui.pushButton_2.clicked.connect(self.unload_to_excel)

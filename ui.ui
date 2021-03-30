@@ -6,321 +6,327 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>928</width>
-    <height>625</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QGroupBox" name="groupBox">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>0</y>
-      <width>431</width>
-      <height>55</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Поиск</string>
-    </property>
-    <widget class="QDateEdit" name="dateEdit">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>110</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="date">
-      <date>
-       <year>2020</year>
-       <month>1</month>
-       <day>1</day>
-      </date>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton">
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>20</y>
-       <width>81</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Найти</string>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBox">
-     <property name="geometry">
-      <rect>
-       <x>130</x>
-       <y>20</y>
-       <width>201</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <item>
-      <property name="text">
-       <string>Земли сельзоз назначения</string>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
       </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Земли промышленности</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Земли населенных пунктов</string>
-      </property>
-     </item>
-    </widget>
-   </widget>
-   <widget class="QTabWidget" name="tabWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>60</y>
-      <width>910</width>
-      <height>546</height>
-     </rect>
-    </property>
-    <property name="currentIndex">
-     <number>0</number>
-    </property>
-    <widget class="QWidget" name="tab_sx">
-     <attribute name="title">
-      <string>Земли сельзоз назначения</string>
-     </attribute>
-     <widget class="QTableWidget" name="table_sx">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>904</width>
-        <height>520</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="lineWidth">
-       <number>1</number>
-      </property>
-      <column>
-       <property name="text">
-        <string>КН</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>КК</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Сегмент</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Код расчета</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Код ВРИ</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Описание перечня</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Дата</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Площадь</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Вид использования по документам</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Неформализованное описание</string>
-       </property>
-      </column>
+      <widget class="QWidget" name="tab_sx">
+       <attribute name="title">
+        <string>Земли сельзоз назначения</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QTableWidget" name="table_sx">
+          <column>
+           <property name="text">
+            <string>КН</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>КК</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Сегмент</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Код расчета</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Код ВРИ</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Описание перечня</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Дата</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Площадь</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Вид использования по документам</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Неформализованное описание</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_prom">
+       <attribute name="title">
+        <string>Земли промышленности</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QTableWidget" name="table_prom">
+          <column>
+           <property name="text">
+            <string>КН</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>КК</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Сегмент</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Код расчета</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Код ВРИ</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Описание перечня</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Дата</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Площадь</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Вид использования по документам</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Неформализованное описание</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_nasel">
+       <attribute name="title">
+        <string>Земли населенных пунктов</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QTableWidget" name="table_nasel">
+          <column>
+           <property name="text">
+            <string>КН</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>КК</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Сегмент</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Код расчета</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Код ВРИ</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Описание перечня</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Дата</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Площадь</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Вид использования по документам</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Неформализованное описание</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tab_prom">
-     <attribute name="title">
-      <string>Земли промышленности</string>
-     </attribute>
-     <widget class="QTableWidget" name="table_prom">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>904</width>
-        <height>520</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="lineWidth">
-       <number>1</number>
-      </property>
-      <column>
-       <property name="text">
-        <string>КН</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>КК</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Сегмент</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Код расчета</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Код ВРИ</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Описание перечня</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Дата</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Площадь</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Вид использования по документам</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Неформализованное описание</string>
-       </property>
-      </column>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_nasel">
-     <attribute name="title">
-      <string>Земли населенных пунктов</string>
-     </attribute>
-     <widget class="QTableWidget" name="table_nasel">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>904</width>
-        <height>520</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="lineWidth">
-       <number>1</number>
-      </property>
-      <column>
-       <property name="text">
-        <string>КН</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>КК</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Сегмент</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Код расчета</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Код ВРИ</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Описание перечня</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Дата</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Площадь</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Вид использования по документам</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Неформализованное описание</string>
-       </property>
-      </column>
-     </widget>
-    </widget>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>460</x>
-      <y>20</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Выгрузить</string>
-    </property>
-   </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="title">
+         <string>Поиск</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QDateEdit" name="dateEdit">
+           <property name="date">
+            <date>
+             <year>2021</year>
+             <month>1</month>
+             <day>1</day>
+            </date>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox">
+           <item>
+            <property name="text">
+             <string>Земли сельзоз назначения</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Земли промышленности</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Земли населенных пунктов</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton">
+           <property name="text">
+            <string>Найти</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox_2">
+        <property name="title">
+         <string>Выгрузить</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>2</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QLabel" name="label_5">
+           <property name="text">
+            <string>5</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>1</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0" colspan="3">
+          <widget class="QPushButton" name="pushButton_2">
+           <property name="text">
+            <string>Старт</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>3</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>4</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string>6</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
