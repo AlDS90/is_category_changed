@@ -44,8 +44,8 @@ class App(QtWidgets.QMainWindow):
         self.setWindowTitle('Анализ категории')
         self.setWindowIcon(QIcon('ui_img/logo.png'))
         [self.init_tb(key) for key in self.d_tb.keys()]
-        self.ui.pushButton.clicked.connect(self.start_analyze)
-        self.ui.pushButton_2.clicked.connect(self.unload_to_excel)
+        self.ui.btn_find.clicked.connect(self.start_analyze)
+        self.ui.btn_unload.clicked.connect(self.unload_to_excel)
 
     def init_tb(self, key: str):
         tb = self.d_tb[key][0]
@@ -88,6 +88,11 @@ class App(QtWidgets.QMainWindow):
                                       (self.li_data_second_db, self.db_name_second)]:
                     if data:
                         self.display_records(data, db_name)
+            self.ui.ll_date.setText(self.date)
+            self.ui.ll_name_db.setText(self.db_name_main)
+        else:
+            self.ui.ll_date.setText('')
+            self.ui.ll_name_db.setText('')
         [self.add_one_row(key) for key in self.d_tb.keys()]
 
     def unload_to_excel(self):
