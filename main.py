@@ -8,8 +8,6 @@ from PyQt5.QtGui import QIcon
 from ui import Ui_MainWindow
 
 
-# сегмент,код расчета и код ври
-
 def get_text(path: str) -> str:
     with open(path) as inf:
         text = inf.read()
